@@ -1,127 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SkillSync AI - SyncCoach</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>SkillSync AI - SyncCoach</title>
+
+<style>
+/* =======================
+   GLOBAL STYLE
+======================= */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #0b1020;
+  color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  font-weight: bold;
+  color: #38bdf8;
+}
+
+.navbar a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.navbar a:hover {
+  color: #38bdf8;
+  opacity: 1;
+}
+
+/* HERO */
+.hero {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(circle at top, #1e293b, #0b1020);
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero h1 {
+  font-size: 42px;
+}
+
+.hero p {
+  opacity: 0.8;
+}
+
+.hero button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  background: #38bdf8;
+  color: black;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* SECTION */
+.section {
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.dark {
+  background: #0f172a;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* CARDS */
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border: 1px solid #38bdf8;
+}
+
+/* BOT BOX */
+.bot-box {
+  margin: 20px auto;
+  padding: 40px;
+  border: 2px dashed #38bdf8;
+  border-radius: 15px;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* DASHBOARD */
+.dashboard {
+  text-align: center;
+}
+
+.score {
+  font-size: 20px;
+  margin-top: 10px;
+  color: #38bdf8;
+}
+
+/* CTA */
+.cta {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #22c55e;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* LOADING */
+.loader {
+  margin: 10px auto;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #38bdf8;
+  border-top: 4px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">SkillSync AI</div>
-    <nav>
-      <a href="#problem">Problem</a>
-      <a href="#solution">Solution</a>
-      <a href="#features">Features</a>
-      <a href="#demo">Try SyncCoach</a>
-    </nav>
-  </header>
+<!-- NAV -->
+<div class="navbar">
+  <div class="logo">SkillSync AI</div>
+  <div>
+    <a href="#scenarios">Scenarios</a>
+    <a href="#demo">SyncCoach</a>
+    <a href="#dashboard">Feedback</a>
+  </div>
+</div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>AI-Powered Soft Skills Training for Real Project Work</h1>
-      <p>
-        Practice real workplace conversations with AI stakeholders, clients, and managers.
-        Improve communication, confidence, and leadership through simulation-based learning.
-      </p>
-      <button onclick="scrollToSection('demo')">Start Training</button>
-    </div>
-  </section>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>AI Soft Skills Training for Real Project Work</h1>
+    <p>Practice stakeholder communication, client meetings, and conflict handling using AI simulation.</p>
+    <button onclick="scrollToSection('scenarios')">Start Training</button>
+  </div>
+</section>
 
-  <!-- STATS STRIP -->
-  <section class="stats">
-    <div>📊 Real-time Simulation</div>
-    <div>🎙 Voice AI Roleplay</div>
-    <div>🧠 Instant Feedback</div>
-    <div>🚀 Enterprise Training System</div>
-  </section>
+<!-- SCENARIOS -->
+<section id="scenarios" class="section">
+  <h2>🎯 Choose Scenario</h2>
 
-  <!-- PROBLEM -->
-  <section id="problem" class="section">
-    <h2>🚨 The Problem</h2>
+  <div class="grid">
 
-    <div class="glass">
-      <p>
-        In real project environments, employees often struggle with soft skills such as communication,
-        stakeholder management, and conflict handling. This leads to:
-      </p>
-
-      <ul>
-        <li>Miscommunication in client meetings</li>
-        <li>Unclear requirement gathering</li>
-        <li>Project delays due to misunderstandings</li>
-        <li>Lack of confidence in presentations</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- SOLUTION -->
-  <section id="solution" class="section dark">
-    <h2>💡 The Solution</h2>
-
-    <div class="glass highlight">
-      <h3>SyncCoach – AI Soft Skills Simulation Trainer</h3>
-      <p>
-        An AI-powered voice training system that simulates real workplace conversations.
-        Users interact with AI stakeholders and receive structured feedback on communication performance.
-      </p>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section id="features" class="section">
-    <h2>⚙️ Key Features</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>🎙 AI Roleplay</h3>
-        <p>Simulate real stakeholder, client, and manager conversations.</p>
-      </div>
-
-      <div class="card">
-        <h3>🧠 Smart Feedback</h3>
-        <p>Get instant evaluation on communication and confidence.</p>
-      </div>
-
-      <div class="card">
-        <h3>🎯 Scenario Training</h3>
-        <p>Practice real project situations like delays, meetings, and conflicts.</p>
-      </div>
-
-      <div class="card">
-        <h3>📈 Skill Improvement</h3>
-        <p>Track progress across communication competencies.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- DEMO -->
-  <section id="demo" class="section dark center">
-    <h2>🎤 Meet SyncCoach</h2>
-    <p>Start your AI-powered soft skills training session</p>
-
-    <div class="bot-box">
-      <p>AI Voice Coach will appear here</p>
-
-      <!-- ElevenLabs embed -->
-      <!-- <elevenlabs-convai agent-id="YOUR_AGENT_ID"></elevenlabs-convai> -->
-      <!-- <script src="https://elevenlabs.io/convai/widget.js"></script> -->
+    <div class="card" onclick="startScenario('Client Update')">
+      <h3>Client Update</h3>
+      <p>Present project progress to client.</p>
     </div>
 
-    <button class="cta">Launch AI Training</button>
-  </section>
+    <div class="card" onclick="startScenario('Requirement Gathering')">
+      <h3>Requirement Gathering</h3>
+      <p>Clarify vague stakeholder needs.</p>
+    </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 SkillSync AI | SyncCoach</p>
-  </footer>
+    <div class="card" onclick="startScenario('Project Delay')">
+      <h3>Project Delay</h3>
+      <p>Explain delays professionally.</p>
+    </div>
 
-  <script src="script.js"></script>
-  <elevenlabs-convai agent-id="agent_2101kwtqj245e7st38rh8sqrmjst"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+    <div class="card" onclick="startScenario('Conflict')">
+      <h3>Conflict Resolution</h3>
+      <p>Handle team disagreement.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- DEMO -->
+<section id="demo" class="section dark">
+  <h2>🎤 SyncCoach AI</h2>
+
+  <div class="bot-box">
+    <p>🧠 AI is ready to simulate workplace conversation</p>
+    <div class="loader"></div>
+
+    <!-- ElevenLabs goes here -->
+    <!-- <elevenlabs-convai agent-id="YOUR_AGENT_ID"></elevenlabs-convai> -->
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="section dashboard">
+  <h2>📊 AI Feedback Dashboard</h2>
+
+  <p>Communication Score</p>
+  <div class="score" id="c1">-- / 10</div>
+
+  <p>Confidence Score</p>
+  <div class="score" id="c2">-- / 10</div>
+
+  <p>Professionalism Score</p>
+  <div class="score" id="c3">-- / 10</div>
+
+  <p>Problem Solving Score</p>
+  <div class="score" id="c4">-- / 10</div>
+
+  <button class="cta" onclick="generateFeedback()">Generate Feedback</button>
+</section>
+
+<script>
+
+/* SMOOTH SCROLL */
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+/* SCENARIO SELECT */
+function startScenario(name){
+  alert("Loading scenario: " + name + " → SyncCoach is ready.");
+  scrollToSection("demo");
+}
+
+/* FAKE AI FEEDBACK */
+function generateFeedback(){
+  document.getElementById("c1").innerText = rand();
+  document.getElementById("c2").innerText = rand();
+  document.getElementById("c3").innerText = rand();
+  document.getElementById("c4").innerText = rand();
+
+  alert("AI Feedback Generated based on simulation.");
+}
+
+function rand(){
+  return (Math.floor(Math.random()*3)+7) + " / 10";
+}
+
+</script>
+
 </body>
 </html>
